@@ -1,53 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="col-md-6">
+	<h3>Hello <?php echo $this->session->user_name; ?></h3>
+</div>
+<div class="col-md-6">
+	<a class="btn btn-danger pull-right" href="<?php echo base_url() . 'Authentication/logout' ?>">Log Out</a>
+</div>
+<div class="col-md-12">
+	<form class="form-horizontal" action="<?php echo base_url() . 'PlayList/index' ?>" method="POST">
+		<input type="hidden" name="id" value="<?php echo (isset($specific_playlist)) ? $specific_playlist['id'] : '' ?>">
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Play List Name</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control col-md-6" name="name" value="<?php echo (isset($specific_playlist)) ? $specific_playlist['name'] : '' ?>">
+			</div>
+		</div>
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
+		<div class="form-group">
 
-<body>
+			<div class="col-sm-6 col-sm-offset-2">
+				<input type="submit" class="btn btn-primary" value="<?php echo (isset($specific_playlist)) ? 'Update' : 'Submit' ?>">
+			</div>
+		</div>
 
-	<form action="<?php echo base_url() . 'PlayList/index' ?>" method="POST">
-		<input type="hidden" name="id" value="<?php echo (isset($specific_playlist)) ? $specific_playlist['id']:'' ?>">
-		<label>Play List Name</label>
-		<input type="text" name="name" value="<?php echo (isset($specific_playlist)) ? $specific_playlist['name']:'' ?>">
-		<input type="submit" value="<?php echo (isset($specific_playlist)) ? 'Update':'Submit' ?>">
+		<div class="col-md-8">
 
+		</div>
 	</form>
 
-	<table class="" border="1px solid black">
+</div>
+
+
+<table class="table table-bordered">
 
 	<h3>List of Playlist Name</h3>
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>User Id</th>
+		<th>Edit</th>
+	</tr>
+	<?php
+	foreach ($playlists as $item) {
+	?>
+
 		<tr>
-			<th>ID</th>
-			<th>Name</th>
-			<th>User Id</th>
-			<th>Edit</th>
+			<td><?php echo $item['id'] ?></td>
+			<td><?php echo $item['name'] ?></td>
+			<td><?php echo $item['user_id'] ?></td>
+			<td><a href="<?php echo base_url() . 'PlayList/index?id=' . $item['id'] ?>">Edit</a></td>
+
 		</tr>
-		<?php
-		foreach ($playlists as $item) {
-		?>
+	<?php
 
-			<tr>
-				<td><?php echo $item['id']?></td>
-				<td><?php echo $item['name']?></td>
-				<td><?php echo $item['user_id']?></td>
-				<td><a href="<?php echo base_url().'PlayList/index?id='.$item['id']?>">Edit</a></td>
-				
-			</tr>
-		<?php
+	}
 
-		}
-
-		?>
+	?>
 
 
-	</table>
-
-
-</body>
-
-</html>
+</table>

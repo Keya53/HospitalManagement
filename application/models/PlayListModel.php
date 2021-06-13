@@ -6,14 +6,14 @@ class PlayListModel extends CI_Model {
 		parent:: __construct();
 		
 	}
-	public function getPlayLIst($id='') {
-		$sql="select * from playlist";
+	public function getPlayLIst($userId,$id='') {
+		$sql="select * from playlist where user_id='$userId'";
         if ($id=='') {
             $query=$this->db->query($sql);
             $result = $query->result_array();
             return $result;
         } else {
-			$sql .= " where id='$id'";
+			$sql .= " and id='$id'";
 			$query=$this->db->query($sql);
             $result = $query->result_array();
 			return $result[0];
