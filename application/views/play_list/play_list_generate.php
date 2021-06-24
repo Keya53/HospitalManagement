@@ -1,10 +1,5 @@
-<div class="col-md-6">
-	<h3>Hello <?php echo $this->session->user_name; ?></h3>
-</div>
-<div class="col-md-6">
-	<a class="btn btn-danger pull-right" href="<?php echo base_url() . 'Authentication/logout' ?>">Log Out</a>
-</div>
 <div class="col-md-12">
+<h3 class="text-center">PlayList Management</h3>
 	<form class="form-horizontal" action="<?php echo base_url() . 'PlayList/index' ?>" method="POST">
 		<input type="hidden" name="id" value="<?php echo (isset($specific_playlist)) ? $specific_playlist['id'] : '' ?>">
 		<div class="form-group">

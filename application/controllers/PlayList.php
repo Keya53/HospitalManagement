@@ -20,7 +20,7 @@ class PlayList extends CI_Controller
 		if (!empty($_POST)) {
 			$id = $this->input->post('id');
 			$dataToAdd['name'] = $this->input->post('name');
-			$dataToAdd['user_id'] = $userId;
+			// $dataToAdd['user_id'] = $userId;
 			if($id !='')  {
 				// update				
 				$this->db->update('playlist', $dataToAdd,['id'=>$id]);
@@ -44,9 +44,8 @@ class PlayList extends CI_Controller
 
 		
 		$this->load->view('header');
-	
+		$this->load->view('sub_header');
 		$this->load->view('play_list/play_list_generate', $data);
-
 		$this->load->view('footer');
 	}
 }
