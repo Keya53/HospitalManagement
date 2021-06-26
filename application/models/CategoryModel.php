@@ -6,6 +6,13 @@ class CategoryModel extends CI_Model {
 		parent:: __construct();
 		
 	}
+	/**
+	 * show category list,
+	 * pass $id for specific category
+	 *
+	 * @param string $id
+	 * @return void
+	 */
 	public function getCategoryList($id='') {
 		$sql="select * from category ";
         if ($id=='') {

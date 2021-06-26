@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Add_article extends CI_Controller {
+class Add_article extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -20,16 +21,15 @@ class Add_article extends CI_Controller {
 	 */
 	public function index()
 	{
-			if($this->form_validation->set_rules('add_article_rules')){
-echo 'ok';
-			}
-			else{
-				echo 'not ok';
-			}
+		if ($this->form_validation->set_rules('add_article_rules')) {
+			echo 'ok';
+		} else {
+			echo 'not ok';
+		}
 
 
 		$this->load->view('header');
-		
+
 		$this->load->view('add_article');
 		$this->load->view('footer');
 	}

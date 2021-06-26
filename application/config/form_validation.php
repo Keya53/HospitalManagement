@@ -4,13 +4,13 @@ $config=[
 			[
 				'field'=>'email',
 				'label'=>'Email',
-				'rules'=>'required|alpha',
+				'rules'=>'required|valid_email|is_unique[user.email]',
 
 			],
 			[
 				'field'=>'password',
-				'label'=>'Password',
-				'rules'=>'required|valid_email|is_unique[user.email]',
+				'label'=>'password',
+				'rules'=>'required|max_length[6]',
 
 			],
 
