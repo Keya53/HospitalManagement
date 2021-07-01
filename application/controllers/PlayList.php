@@ -44,7 +44,7 @@ class PlayList extends CI_Controller
 
 		
 		$this->load->view('header');
-		$this->load->view('sub_header');
+		$this->load->view('menu');
 		$this->load->view('play_list/play_list_generate', $data);
 		$this->load->view('footer');
 	}

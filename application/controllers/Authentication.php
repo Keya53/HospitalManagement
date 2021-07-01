@@ -30,7 +30,8 @@ class Authentication extends CI_Controller
 					$this->session->set_userdata(
 						[
 							'user_id' => $user[0]['user_id'],
-							'user_name' => $user[0]['name']
+							'user_name' => $user[0]['name'],
+							'user_type' => $user[0]['user_type'],
 						]
 					);
 					redirect(base_url());

@@ -22,5 +22,13 @@ class SubcategoryModel extends CI_Model {
 			return $result[0];
 		}
 	}
+	public function deleteSubcategory($id){
+		$sql="delete  from subcategory where subcategory_id='$id'";
+		$query = $this->db->query($sql);
+		if($query) {
+			return true;
+		}
+		return false;
+	}
 }
 ?>

@@ -1,17 +1,3 @@
-<?php
-$msg = $this->session->flashdata('success');
-if ($msg) {
-?>
-	<div class="row">
-		<div class="col-md-6 alert alert-danger">
-			<?php echo $msg; ?>
-		</div>
-	</div>
-<?php
-}
-?>
-
-
 <div class="container">
 	<h3 class="col-md-offset-4" style="margin-bottom: 10px;">Make Your Post</h3>
 	<form action="<?php 

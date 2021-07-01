@@ -10,31 +10,39 @@ class Post extends CI_Controller
 		$this->load->model('CategoryModel');
 	}
 
-	public function index() {
+	public function index()
+	{
+		$userId = $this->session->userdata('user_id');
+		$usertype = $this->session->userdata('user_type');
+		if($usertype == 'superadmin') {
+			$userId = '';
+		}
 		$postModel = new PostModel();
 
-		$data['posts'] = $postModel->getPost();
+		$data['posts'] = $postModel->getPost($userId);
 		$this->load->view('header');
-		$this->load->view('post_list',$data);
+		$this->load->view('menu');
+		$this->load->view('post_list', $data);
 		$this->load->view('footer');
 		// echo '<pre>',print_r($data['posts']);die();
 	}
 
-	public function edit(){
-		if(isset($_GET['id'])) {
+	public function edit()
+	{
+		if (isset($_GET['id'])) {
 			$id = $_GET['id'];
-		}else {
-			$id='';
+		} else {
+			$id = '';
 		}
 		$postModel = new PostModel();
 		$data['post'] = $postModel->editpost($id);
-		$categoryModel=new CategoryModel();
-		$data['categories']= $categoryModel->getCategoryList();
-	
-		$this->load->view('header');
-		$this->load->view('minifacebook',$data);
-		$this->load->view('footer');		
+		$categoryModel = new CategoryModel();
+		$data['categories'] = $categoryModel->getCategoryList();
 
+		$this->load->view('header');
+		$this->load->view('menu');
+		$this->load->view('minifacebook', $data);
+		$this->load->view('footer');
 	}
 	public function create()
 	{
@@ -47,31 +55,31 @@ class Post extends CI_Controller
 				'category_id' => $this->input->post('category_id'),
 				'created_by' => $this->session->userdata('user_id')
 			];
-			
+
 
 			$status = $this->db->insert('posts', $dataToAdd);
 
 			if ($status) {
-				$this->session->set_flashdata('success','Successfully Created');
+				$this->session->set_flashdata('success', 'Successfully Created');
 				return redirect('post/create');
 			} else {
 				return redirect('post/create');
 			}
 		} else {
-			
+
 			$categoryModel = new CategoryModel();
-			
-			$data['categories']= $categoryModel->getCategoryList();
+
+			$data['categories'] = $categoryModel->getCategoryList();
 			// echo '<pre>',print_r($data['categories']);die();
-			
+
 			$this->load->view('header');
-			$this->load->view('minifacebook',$data);
+			$this->load->view('menu');
+			$this->load->view('minifacebook', $data);
 			$this->load->view('footer');
 		}
-
 	}
 
-	public function update($id='')
+	public function update($id = '')
 	{
 		// echo '<pre>',print_r($_POST);die();
 
@@ -81,29 +89,35 @@ class Post extends CI_Controller
 				'title' => $this->input->post('title'),
 				'description' => $this->input->post('description'),
 				'category_id' => $this->input->post('category_id'),
-				'created_by' => $this->session->userdata('user_id')
+				'updated_by' => $this->session->userdata('user_id')
 			];
-			
 
-			$status = $this->db->update('posts', $dataToAdd,['id'=>$id]);
+
+			$status = $this->db->update('posts', $dataToAdd, ['id' => $id]);
 
 			if ($status) {
-				$this->session->set_flashdata('success','Successfully Updated');
+				$this->session->set_flashdata('success', 'Successfully Updated');
 				return redirect('post');
 			} else {
-				return redirect('post/edit?id='.$id);
+				return redirect('post/edit?id=' . $id);
 			}
 		} else {
-			
+
 			$categoryModel = new CategoryModel();
-			
-			$data['categories']= $categoryModel->getCategoryList();
+
+			$data['categories'] = $categoryModel->getCategoryList();
 			// echo '<pre>',print_r($data['categories']);die();
-			
+
 			$this->load->view('header');
-			$this->load->view('minifacebook',$data);
+			$this->load->view('minifacebook', $data);
 			$this->load->view('footer');
 		}
-
 	}
+
+
+
+	
+	
 }
+
+

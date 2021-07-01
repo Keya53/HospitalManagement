@@ -5,8 +5,8 @@
 	?>
 		<div class="row">
 			<div class="col-md-6 alert alert-danger">
-				<?=  $error; ?>
-				<!-- <?php echo $error; ?> -->
+				<!-- <?=  $error; ?> -->
+				<?php echo $error; ?>
 			</div>
 		</div>
 	<?php

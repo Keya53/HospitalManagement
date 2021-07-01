@@ -61,7 +61,8 @@
 			<td><?php echo $item['subcategory_name'] ?></td>
 			<td><?php echo $item['category_name'] ?></td>
 			
-			<td><a href="<?php echo base_url() . 'Subcategory/index?subcategory_id=' . $item['subcategory_id'] ?>">Edit</a></td>
+			<td><a  href="<?php echo base_url() . 'Subcategory/index?subcategory_id=' . $item['subcategory_id'] ?>">Edit</a></td>
+			<td><a href="<?php echo base_url() . 'Subcategory/deleteSubcategory?subcategory_id=' . $item['subcategory_id'] ?>">Delete</a></td>
 
 		</tr>
 	<?php

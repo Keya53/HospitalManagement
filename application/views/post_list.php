@@ -7,10 +7,10 @@
 			<th>Id</th>
 			<th>Title</th>
 			<th>Description</th>
-			<th>Category Name	</th>
+			<th>Category Name </th>
 			<th>Created By</th>
 			<th>Edit</th>
-			
+
 
 
 		</tr>
@@ -26,7 +26,7 @@
 				<td><?php echo $item['name'] ?></td>
 				<td><a href="<?php echo base_url() . 'post/edit?id=' . $item['id'] ?>">Edit</a></td>
 
-				
+
 
 			</tr>
 		<?php
@@ -39,3 +39,4 @@
 	</table>
 
 </div>
+
